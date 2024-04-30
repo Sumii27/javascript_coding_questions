@@ -1,0 +1,269 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modified Deedy - One Page Two Column Resume
+% LaTeX Template
+% Version 1.0 (07/04/2020)
+% 
+% Author
+% Apurv Mishra(https://apurvmishra.xyz)
+% Repository
+% https://github.com/apurvmishra99/Modified-Deedy-Resume
+% Original author of Deedy Resume:
+% Debarghya Das (http://debarghyadas.com)
+% His repository:
+% https://github.com/deedydas/Deedy-Resume
+%
+%
+ 
+%
+% IMPORTANT: THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
+%
+% This template uses several fonts not included with Windows/Linux by
+% default. If you get compilation errors saying a font is missing, find the line
+% on which the font is used and either change it to a font included with your
+% operating system or comment the line out to use the default font.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% TODO:
+% 1. Integrate biber/bibtex for article citation under publications.
+% 2. Figure out a smoother way for the document to flow onto the next page.
+% 3. Add styling information for a "Projects/Hacks" section.
+% 4. Add location/address information
+%
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Known Issues:
+% 1. Overflows onto second page if any column's contents are more than the
+% vertical limit
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ 
+\documentclass[]{deedy-resume-openfont}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{eurosym}
+\usepackage[document]{ragged2e}
+\pagestyle{fancy}
+\fancyhf{}
+\begin{document}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     LAST UPDATED DATE
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \lastupdated
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     TITLE NAME
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\namesection{Sumit}{Kapase}
+{ \urlstyle{same}
+\href{https://apurvmishra.xyz} \bf
+\href{mailto:sumitkapase1280@gmail.com}{\bf sumitkapase1280@gmail.com} | \bf +91 9130388830 | \urlstyle{same}
+\href{https://github.com/Sumii27}{\bf Github} |
+\urlstyle{same}\href{https://www.linkedin.com/in/sumit-kapase-6255a3225/}{\bf Linkedin}\\
+ 
+}
+ 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     COLUMN ONE
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t]{0.70\textwidth}
+ 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EXPERIENCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\section{\ Summary}
+% \runsubsection{Textanalog}
+% \descript{| Android Application Intern}
+% \location{OCT \textbf{2021 } – DEC \textbf{2021 } | Delhi, India}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\item {Experienced front-end web developer specializing in building responsive \\ and scalable web applications with a strong proficiency in JavaScript,\\ React, Redux and front-end architecture.}
+\end{tightemize}
+\sectionsep
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EXPERIENCE (Updated)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \section{EXPERIENCE}
+\runsubsection{Nihilent Technologies}
+\descript{| Software Engineer}
+\location{May 2022 – Present | Pune, India}
+\vspace{\topsep}
+\begin{tightemize}
+
+\item {Developing responsive web applications with React.js, Redux, and collaborating on UI/UX enhancements.}
+\item {Integrating RESTful APIs, optimizing client-side performance, and contributing to data visualization projects.}
+\end{tightemize}
+\sectionsep
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     PROJECTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\section{Work History and Projects}
+\runsubsection{Sapient Finserv} \textbf{(June 2022 – Present)}
+\hspace{0.15cm}\\
+% \href{https://play.google.com/store/apps/details?id=com.credenz2021.app.credenz2021app}{ \faExternalLink }\\
+% \descript{Flutter | Dart | API | Razorpay}
+% \location{Nov \textbf{2018 }}
+\begin{tightemize}
+\item {Developed user-friendly web applications using React.js, Redux, and Redux Toolkit. Utilized Redux Toolkit's slice and createAsyncThunk functions to handle state updates and asynchronous API calls respectively.}
+\item{Created dashboards and Reports for data visualization, utilizing React.js and packages to present complex data in an intuitive and interactive manner. Also successfully implemented client registration, login and onboarding.}
+\item{Collaborated with cross-functional teams, including designers and backend developers, to implement front-end solutions collaborated with clients to define solution requirements.}
+\item{Integrated RESTful APIs and worked with backend developers to ensure seamless data flow and functionality.}
+% \item{\textbf{500+ downloads} on playstore.} 
+\end{tightemize}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\runsubsection{New Jersey Case Management System} \textbf{(May 2023 – Nov 2023)}
+\hspace{0.15cm}\\
+% \href{https://play.google.com/store/apps/details?id=com.credenz2021.app.credenz2021app}{ \faExternalLink }\\
+% \descript{Flutter | Dart | API | Razorpay}
+% \location{Nov \textbf{2018 }}
+\begin{tightemize}
+\item {Designed and developed a web-based case management
+system (CMS) using React.js, Redux and Material UI. The project is a
+case task management system for government of New Jersey.}
+\item {Worked on admin module where admin can see the information of body parts which are locked and unlocked}
+\item {Used swagger to get the REST Api and integrated it.}
+% \item{\textbf{500+ downloads} on playstore.} 
+\end{tightemize}
+\sectionsep
+\subsection{My Github Projects :-}
+\runsubsection{Contact List Management (React.Js, Javascript)}
+% \runsubsection{My Github Repository Projects}
+% {Contact List Management}
+\hspace{0.15cm}
+% \href{https://github.com/mayankharer/vaccine_update}{\faGithubSquare}
+% \href{https://github.com/mayankharer/vaccine_update}
+% {\faExternalLink}
+\hspace{0.15cm}\\
+% \descript{Co-WIN Public APIs  |  RESTAPI  |  Flutter}
+% \location{Apr \textbf{2019 }}
+\begin{tightemize}
+\item {Created Contact Manager Application by using semantic UI library. User can add, edit, delete and get data by API's.}
+\item {Created API server and get all the methods required for CRUD operations by using JSON server.}
+\end{tightemize}
+\sectionsep
+\runsubsection{Cricket Premier Leage (Express.js, Mongo db)}
+% \runsubsection{My Github Repository Projects}
+% {Contact List Management}
+\hspace{0.15cm}
+% \href{https://github.com/mayankharer/vaccine_update}{\faGithubSquare}
+% \href{https://github.com/mayankharer/vaccine_update}
+% {\faExternalLink}
+\hspace{0.15cm}\\
+% \descript{Co-WIN Public APIs  |  RESTAPI  |  Flutter}
+% \location{Apr \textbf{2019 }}
+\begin{tightemize}
+\item {Created backend server by using express js and node.js
+Created API server and get all the methods required for CRUD operations by using JSON server.}\\
+\item {Used mongoDb for database and intergrated it with express server.}
+\end{tightemize}
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     COLUMN TWO
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.25\textwidth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     SKILLS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\section{Skills}
+\subsection{Frameworks} 
+\location{\textbf{Libaries:}}
+\textbullet{}React JS \\ 
+\textbullet{}Redux Toolkit \\ 
+\textbullet{}Mongo DB  \\
+\textbullet{}RESTAPI Integration \\ \textbullet{}Express JS\\
+\vspace{0.3cm}
+\subsection{Programming}
+\location{\textbf{Languages}}
+\textbullet{}HTML\\
+\textbullet{}CSS \\
+% \textbullet{}Java
+\textbullet{}JavaScript\\
+\textbullet{}NoSQL\\
+\textbullet{}C\\
+% \textbullet{}HTML \textbullet{}CSS \textbullet{}JavaScript \\
+\vspace{0.3cm}
+\subsection{Tools \& Technologies}
+\textbullet{}Git\\
+\textbullet{}Github \\
+\textbullet{}Postman \\
+\textbullet{}Swagger \\
+\textbullet{}ES6\\
+\vspace{0.3cm}
+ 
+\sectionsep
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     AWARDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% \section{Links} 
+% Leetcode://  \href{https://leetcode.com/mayankh17/}{\bf mayankh17} \\
+% HackerRank://  \href{https://www.hackerrank.com/mayankh17}{\bf mayankh17} \\
+% Codechef://  \href{https://www.codechef.com/users/mayankh17}{\bf mayankh17} \\
+% Codeforces://  \href{https://codeforces.com/profile/mayankh17}{\bf mayankh17} \\
+% Github:// \href{https://github.com/mayankharer}{\bf mayankh17} \\
+% LinkedIn://  \href{https://www.linkedin.com/in/mayank-harer/}{\bf mayankharer} \\
+% Codechef://  \href{https://www.linkedin.com/in/mayank-harer/}{\bf mayankharer} \\
+\sectionsep
+ 
+% \section{Extracurricular}
+% % \vspace{0.2cm}
+% \textbullet{\textbf{PICT IEEE STUDENT BRANCH} \textbf{(PISB)}}\\
+% -PISB aims to escalate the knowledge and trends in the diverse fields of technologies amongst its members.\\ 
+% -PISB upholds two major events every year - Credenz and Credenz Tech Dayz.
+% \vspace{0.15cm}
+ 
+% \textbullet{\textbf{PICT-Football Team}( Mid-Fielder)} \\
+%   -Member of the PICT Football Team playing as a mid-player and have represented our college at various tournaments.\\
+%   -Hosted intra-college football tournaments.
+% \vspace{0.15cm}
+ 
+% % \justify
+% \textbullet{\textbf{Pictoreal Pictosocial}\\
+% (Member - Volunteer)} \\
+% -Worked on designing and Optimizing design of Annual College Magazine.\\
+% -Organised and conducted blood donation camps. 
+% \sectionsep
+   
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EDUCATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\section{Education} 
+\descript{Shivaji University , Kolhapur}
+\textbf{B.Tech Information Technology}\\
+\textbf{July \textbf{2018 } - \textbf{June \textbf{2022}}}\\
+\textbf{CGPA: 8.2/10} 
+ 
+\section{Hobbies}
+\textbullet{{Visiting Github Repositories}}\\
+% \textbullet{{Reading about new technologies}\\
+% \textbullet{{Watching podcasts}\\
+\textbullet{{Enhancing Problem Solving}\\
+\textbullet{{Going to Gym regularly}\\
+\textbullet{{Skating}\\
+\textbullet{{Swimming}\\
+\textbullet{{Playing Volleyball}\\
+\end{minipage}%
+\end{document}  
+\documentclass[]{article}
