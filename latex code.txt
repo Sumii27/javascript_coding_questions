@@ -1,269 +1,285 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Modified Deedy - One Page Two Column Resume
-% LaTeX Template
-% Version 1.0 (07/04/2020)
-% 
-% Author
-% Apurv Mishra(https://apurvmishra.xyz)
-% Repository
-% https://github.com/apurvmishra99/Modified-Deedy-Resume
-% Original author of Deedy Resume:
-% Debarghya Das (http://debarghyadas.com)
-% His repository:
-% https://github.com/deedydas/Deedy-Resume
-%
-%
- 
-%
-% IMPORTANT: THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
-%
-% This template uses several fonts not included with Windows/Linux by
-% default. If you get compilation errors saying a font is missing, find the line
-% on which the font is used and either change it to a font included with your
-% operating system or comment the line out to use the default font.
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% TODO:
-% 1. Integrate biber/bibtex for article citation under publications.
-% 2. Figure out a smoother way for the document to flow onto the next page.
-% 3. Add styling information for a "Projects/Hacks" section.
-% 4. Add location/address information
-%
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Known Issues:
-% 1. Overflows onto second page if any column's contents are more than the
-% vertical limit
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
- 
-\documentclass[]{deedy-resume-openfont}
-\usepackage{fancyhdr}
-\usepackage[utf8]{inputenc}
-\usepackage{eurosym}
-\usepackage[document]{ragged2e}
-\pagestyle{fancy}
-\fancyhf{}
-\begin{document}
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%     LAST UPDATED DATE
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \lastupdated
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%     TITLE NAME
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\namesection{Sumit}{Kapase}
-{ \urlstyle{same}
-\href{https://apurvmishra.xyz} \bf
-\href{mailto:sumitkapase1280@gmail.com}{\bf sumitkapase1280@gmail.com} | \bf +91 9130388830 | \urlstyle{same}
-\href{https://github.com/Sumii27}{\bf Github} |
-\urlstyle{same}\href{https://www.linkedin.com/in/sumit-kapase-6255a3225/}{\bf Linkedin}\\
- 
+ const monotonicArr = (nums) =>{
+     for (let index=0; index < nums.length; index++){
+         if (nums[index] !=0){
+             nums[index+1]
+             console.log(nums[index])
+         }
+     }
+ }
+
+ console.log(monotonicArr([4, 0, 1, 4, 2, 7, 0]))
+
+
+
+ const missingNumbers = (nums) => {
+     let uniqueNumbers = [...new Set(nums)].sort();
+     console.log(uniqueNumbers)
+     let missingNumbers = [];
+
+     for(let i=0; i < uniqueNumbers.length; i++) {
+         let current = uniqueNumbers[i];
+         let nexxt = uniqueNumbers[i+1];
+         if(nexxt-current > 1){
+             for(let j=current + 1; j<nexxt; j++){
+                 missingNumbers.push(j)
+             }
+         }
+     }
+
+     return missingNumbers;
+ };
+
+ console.log(missingNumbers([4, 0, 1, 4, 2, 7, 8]));
+
+
+
+ const moveZeros =(nums) =>{
+       const nonZeroIndex = nums.filter((item, index) => item != 0)
+       const zeroIndex = nums.filter((item, index) => item ==0)
+         console.log( ...nonZeroIndex,  ...zeroIndex)
+ }
+
+ console.log(moveZeros([0, 2, 0, 3, 4, 0, 5, 6, 0, 7]))
+
+
+
+ const missing = (nums) =>{
+   const myArr = [...new Set(nums)].sort()
+   missingArr = []
+         for(let i=0; i < myArr.length; i++){
+             let current = myArr[i];
+             let next = myArr[i+1];
+             if(next-current > 1){
+                 for(let j =current+1; j < next; j++){
+                     missingArr.push(j)
+                 }
+             }
+         }
+         return missingArr
+ }
+ console.log(missing([9, 6, 4, 2, 3, 5, 7, 0, 1]))
+
+
+
+ const longestSubString=(nums)=>{
+     const myArr = nums.split('');
+     for(let i=0; i<myArr.length; i++){
+        
+     }
+ }
+
+ console.log(longestSubString('abcabcbb'))
+
+
+
+ rotating k times
+
+const rotate = (nums, k) =>{
+     let myArr = [];
+     for (let i=0; i<k; i++){
+         const lastElement = nums.pop()
+         nums.unshift(lastElement)
+     }
+    const myArr = nums.splice(-k)
+    return [...myArr, ...nums];
 }
- 
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%     COLUMN ONE
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{minipage}[t]{0.70\textwidth}
- 
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     EXPERIENCE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-\section{\ Summary}
-% \runsubsection{Textanalog}
-% \descript{| Android Application Intern}
-% \location{OCT \textbf{2021 } – DEC \textbf{2021 } | Delhi, India}
-\vspace{\topsep} % Hacky fix for awkward extra vertical space
-\begin{tightemize}
-\item {Experienced front-end web developer specializing in building responsive \\ and scalable web applications with a strong proficiency in JavaScript,\\ React, Redux and front-end architecture.}
-\end{tightemize}
-\sectionsep
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     EXPERIENCE (Updated)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \section{EXPERIENCE}
-\runsubsection{Nihilent Technologies}
-\descript{| Software Engineer}
-\location{May 2022 – Present | Pune, India}
-\vspace{\topsep}
-\begin{tightemize}
 
-\item {Developing responsive web applications with React.js, Redux, and collaborating on UI/UX enhancements.}
-\item {Integrating RESTful APIs, optimizing client-side performance, and contributing to data visualization projects.}
-\end{tightemize}
-\sectionsep
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     PROJECTS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-\section{Work History and Projects}
-\runsubsection{Sapient Finserv} \textbf{(June 2022 – Present)}
-\hspace{0.15cm}\\
-% \href{https://play.google.com/store/apps/details?id=com.credenz2021.app.credenz2021app}{ \faExternalLink }\\
-% \descript{Flutter | Dart | API | Razorpay}
-% \location{Nov \textbf{2018 }}
-\begin{tightemize}
-\item {Developed user-friendly web applications using React.js, Redux, and Redux Toolkit. Utilized Redux Toolkit's slice and createAsyncThunk functions to handle state updates and asynchronous API calls respectively.}
-\item{Created dashboards and Reports for data visualization, utilizing React.js and packages to present complex data in an intuitive and interactive manner. Also successfully implemented client registration, login and onboarding.}
-\item{Collaborated with cross-functional teams, including designers and backend developers, to implement front-end solutions collaborated with clients to define solution requirements.}
-\item{Integrated RESTful APIs and worked with backend developers to ensure seamless data flow and functionality.}
-% \item{\textbf{500+ downloads} on playstore.} 
-\end{tightemize}
-\vspace{\topsep} % Hacky fix for awkward extra vertical space
-\runsubsection{New Jersey Case Management System} \textbf{(May 2023 – Nov 2023)}
-\hspace{0.15cm}\\
-% \href{https://play.google.com/store/apps/details?id=com.credenz2021.app.credenz2021app}{ \faExternalLink }\\
-% \descript{Flutter | Dart | API | Razorpay}
-% \location{Nov \textbf{2018 }}
-\begin{tightemize}
-\item {Designed and developed a web-based case management
-system (CMS) using React.js, Redux and Material UI. The project is a
-case task management system for government of New Jersey.}
-\item {Worked on admin module where admin can see the information of body parts which are locked and unlocked}
-\item {Used swagger to get the REST Api and integrated it.}
-% \item{\textbf{500+ downloads} on playstore.} 
-\end{tightemize}
-\sectionsep
-\subsection{My Github Projects :-}
-\runsubsection{Contact List Management (React.Js, Javascript)}
-% \runsubsection{My Github Repository Projects}
-% {Contact List Management}
-\hspace{0.15cm}
-% \href{https://github.com/mayankharer/vaccine_update}{\faGithubSquare}
-% \href{https://github.com/mayankharer/vaccine_update}
-% {\faExternalLink}
-\hspace{0.15cm}\\
-% \descript{Co-WIN Public APIs  |  RESTAPI  |  Flutter}
-% \location{Apr \textbf{2019 }}
-\begin{tightemize}
-\item {Created Contact Manager Application by using semantic UI library. User can add, edit, delete and get data by API's.}
-\item {Created API server and get all the methods required for CRUD operations by using JSON server.}
-\end{tightemize}
-\sectionsep
-\runsubsection{Cricket Premier Leage (Express.js, Mongo db)}
-% \runsubsection{My Github Repository Projects}
-% {Contact List Management}
-\hspace{0.15cm}
-% \href{https://github.com/mayankharer/vaccine_update}{\faGithubSquare}
-% \href{https://github.com/mayankharer/vaccine_update}
-% {\faExternalLink}
-\hspace{0.15cm}\\
-% \descript{Co-WIN Public APIs  |  RESTAPI  |  Flutter}
-% \location{Apr \textbf{2019 }}
-\begin{tightemize}
-\item {Created backend server by using express js and node.js
-Created API server and get all the methods required for CRUD operations by using JSON server.}\\
-\item {Used mongoDb for database and intergrated it with express server.}
-\end{tightemize}
-\sectionsep
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%     COLUMN TWO
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{minipage}%
-\hfill
-\begin{minipage}[t]{0.25\textwidth}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     SKILLS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-\section{Skills}
-\subsection{Frameworks} 
-\location{\textbf{Libaries:}}
-\textbullet{}React JS \\ 
-\textbullet{}Redux Toolkit \\ 
-\textbullet{}Mongo DB  \\
-\textbullet{}RESTAPI Integration \\ \textbullet{}Express JS\\
-\vspace{0.3cm}
-\subsection{Programming}
-\location{\textbf{Languages}}
-\textbullet{}HTML\\
-\textbullet{}CSS \\
-% \textbullet{}Java
-\textbullet{}JavaScript\\
-\textbullet{}NoSQL\\
-\textbullet{}C\\
-% \textbullet{}HTML \textbullet{}CSS \textbullet{}JavaScript \\
-\vspace{0.3cm}
-\subsection{Tools \& Technologies}
-\textbullet{}Git\\
-\textbullet{}Github \\
-\textbullet{}Postman \\
-\textbullet{}Swagger \\
-\textbullet{}ES6\\
-\vspace{0.3cm}
- 
-\sectionsep
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     AWARDS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-% \section{Links} 
-% Leetcode://  \href{https://leetcode.com/mayankh17/}{\bf mayankh17} \\
-% HackerRank://  \href{https://www.hackerrank.com/mayankh17}{\bf mayankh17} \\
-% Codechef://  \href{https://www.codechef.com/users/mayankh17}{\bf mayankh17} \\
-% Codeforces://  \href{https://codeforces.com/profile/mayankh17}{\bf mayankh17} \\
-% Github:// \href{https://github.com/mayankharer}{\bf mayankh17} \\
-% LinkedIn://  \href{https://www.linkedin.com/in/mayank-harer/}{\bf mayankharer} \\
-% Codechef://  \href{https://www.linkedin.com/in/mayank-harer/}{\bf mayankharer} \\
-\sectionsep
- 
-% \section{Extracurricular}
-% % \vspace{0.2cm}
-% \textbullet{\textbf{PICT IEEE STUDENT BRANCH} \textbf{(PISB)}}\\
-% -PISB aims to escalate the knowledge and trends in the diverse fields of technologies amongst its members.\\ 
-% -PISB upholds two major events every year - Credenz and Credenz Tech Dayz.
-% \vspace{0.15cm}
- 
-% \textbullet{\textbf{PICT-Football Team}( Mid-Fielder)} \\
-%   -Member of the PICT Football Team playing as a mid-player and have represented our college at various tournaments.\\
-%   -Hosted intra-college football tournaments.
-% \vspace{0.15cm}
- 
-% % \justify
-% \textbullet{\textbf{Pictoreal Pictosocial}\\
-% (Member - Volunteer)} \\
-% -Worked on designing and Optimizing design of Annual College Magazine.\\
-% -Organised and conducted blood donation camps. 
-% \sectionsep
-   
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     EDUCATION
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-\section{Education} 
-\descript{Shivaji University , Kolhapur}
-\textbf{B.Tech Information Technology}\\
-\textbf{July \textbf{2018 } - \textbf{June \textbf{2022}}}\\
-\textbf{CGPA: 8.2/10} 
- 
-\section{Hobbies}
-\textbullet{{Visiting Github Repositories}}\\
-% \textbullet{{Reading about new technologies}\\
-% \textbullet{{Watching podcasts}\\
-\textbullet{{Enhancing Problem Solving}\\
-\textbullet{{Going to Gym regularly}\\
-\textbullet{{Skating}\\
-\textbullet{{Swimming}\\
-\textbullet{{Playing Volleyball}\\
-\end{minipage}%
-\end{document}  
-\documentclass[]{article}
+const sortedSquares =(nums) =>{
+   return nums.map((item) => item *item).sort((a,b) => a-b)
+}
+console.log(sortedSquares([-4,-1,0,3,10]))
+
+
+
+ obj to arr
+const obj = {
+  '0': 'hello',
+  '1': 'here',
+  '2': 'here',
+  '3': 'is',
+  '4': 'my',
+  '5': 'hello'
+};
+
+const myArr = Object.values(obj).map((item) => item)
+
+
+
+ frequency finder
+const frequencyFinder = (str) => {
+   let count = {};
+   let maxCount = 0;
+   let mostOccurredElement = null;
+
+   str.forEach((item) => {
+       if (count[item]) {
+           count[item]++;
+       } else {
+           count[item] = 1;
+       }
+
+       if (count[item] > maxCount) {
+           maxCount = count[item];
+           mostOccurredElement = item;
+       }
+   });
+
+   return mostOccurredElement;
+}
+
+const str = ['a', 'b', 'a', 'c', 'b', 'a', 'd', 'a', 'b'];
+const mostOccurred = frequencyFinder(str);
+console.log("Most occurred element:", mostOccurred);
+
+//less repeating number
+
+const firstUniqChar = function(s) {
+    let myObj = {};
+    let minCount = Infinity;
+    let lessOccurredElement = null;
+
+    s.split('').forEach((item, index) => {
+        if (myObj[item]) {
+            myObj[item]++
+        } else {
+            myObj[item]  = 1
+        }
+    })
+    Object.entries(myObj).forEach(([key, value]) => {
+        if (myObj[key] < minCount ) {
+            minCount = myObj[key]
+            lessOccurredElement =  key
+        }
+    })
+    return {'object': myObj, 'less repeating number' : lessOccurredElement};
+};
+
+console.log(firstUniqChar('loveleetcode'))
+
+arr to obj
+const arr = [ 'hello', 'here', 'here', 'is', 'my', 'hello' ]
+let myObj ={}
+
+arr.forEach((value, index) => {
+  myObj[index] = value;
+})
+
+console.log(myObj)
+
+
+
+ filtering
+const values = {
+  contactItem: [
+    { contactItemSeq: 1, contactItemDetails: "Details 1" },
+    { contactItemSeq: 2, contactItemDetails: "Details 2" },
+    { contactItemSeq: 3, contactItemDetails: "Details 3" }
+  ]
+};
+
+const editObj = {
+  contactItem: [
+    { contactItemSeq: 2, contactItemDetails: "Details 2 edited" },
+    { contactItemSeq: 4, contactItemDetails: "Details 4" },
+    { contactItemSeq: 5, contactItemDetails: "Details 5" }
+  ]
+};
+let mappedValue = []
+const mappedSeq = values.contactItem.map((item) => item.contactItemSeq)
+const filteredData = editObj.contactItem.filter((item) => {
+    if(mappedSeq.includes(item.contactItemSeq)){
+        return mappedValue.push({...item, status: 'filtered'})
+    }
+    return mappedValue.push({...item, status: 'unfiltered'})
+}
+)
+console.log('mappedSeq', mappedValue)
+
+
+
+ binary search 
+const arr = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
+
+const binarySearch = (arr, target) => {
+    let left = 0;
+    let  right = arr.length - 1
+    while(left <= right) {
+        let mid = Math.floor((left+right)/2)
+        if (arr[mid] == target) {
+            return {'index': mid, 'value': arr[mid]}
+        } else if (arr[mid] < target) {
+            left = mid + 1
+        } else {
+            right = mid - 1
+        }
+    }
+    
+}
+console.log(binarySearch(arr, 12));
+
+
+
+// flattening Nested Array
+const nestedArray = [1, 6,
+  [1, 2, [3, 4]],
+  [5, 6],
+  [7, [8, [9, 10]]]
+]
+const flattenNested = (array) => {
+   let flattendArr= [];
+   array.forEach((item) => {
+       if (Array.isArray(item)) {
+           flattendArr = flattendArr.concat(flattenNested(item))
+        //   console.log('item', item)
+       } else {
+           flattendArr.push(item)
+       }
+   })
+   return flattendArr
+}
+
+console.log(flattenNested(nestedArray));
+
+
+
+
+//filtering through numbers
+const data = {2: 'abc',3: 'def',5: 'ghi',9: 'jkl',7: 'pqr'}
+const targetNumber = '35';
+const filterdOBJ = (number) => {
+    let myObj= {};
+   number.split('').forEach((item) => {
+       if (data[item]) {
+           myObj[item] = data[item]
+       }
+   })
+   return Object.values(myObj).join('')
+}
+
+
+console.log(filterdOBJ(targetNumber))
+
+
+//fibonacci seq
+const fibonacci = (n) =>{
+    const fib = [0,1]; // initially we have this elemnets for fib
+    for (let i=2; i<n; i++) {
+        fib[i] = fib[i-1] + fib[i-2]
+    }
+    return fib;
+}
+
+console.log(fibonacci(7))
+
+//factorial of number O(n)
+const factorial = (n) =>{
+   let fact = 1;
+   for (let i=2; i<=n; i++ ) {
+       fact = fact * i
+   }
+   return fact
+}
+
+console.log(factorial(4))
