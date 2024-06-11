@@ -59,20 +59,7 @@
  }
  console.log(missing([9, 6, 4, 2, 3, 5, 7, 0, 1]))
 
-
-
- const longestSubString=(nums)=>{
-     const myArr = nums.split('');
-     for(let i=0; i<myArr.length; i++){
-        
-     }
- }
-
- console.log(longestSubString('abcabcbb'))
-
-
-
- rotating k times
+// rotating k times
 
 const rotate = (nums, k) =>{
      let myArr = [];
@@ -283,3 +270,75 @@ const factorial = (n) =>{
 }
 
 console.log(factorial(4))
+
+//finding consecutive 1 from the binary array
+const consecutiveOnes = (arr) => {
+    let current = 0;
+    let max = 0;
+    for(let i=0; i < arr.length; i++) {
+        if(!arr[i]){
+            current = 0
+        } else {
+            current ++;
+            if (max < current) {
+                max = current
+            }
+        }
+    }
+    return max
+    
+}
+
+
+//reversing a number without converting it to a string
+
+function reverseNumber(number) {
+  var revNumber = 0;
+  while (number > 0) {
+    revNumber = (revNumber * 10) + (number % 10);
+    number = Math.floor(number / 10);
+  }
+  return revNumber;
+}
+console.log(reverseNumber(876));
+
+// longest sub string present in the array
+function longestCommonPrefix(arr) {
+    let result = arr[0];
+    let length = result.length;
+    for (let i = 1; i < arr.length; i++) {
+        while (arr[i].indexOf(result) !== 0) {
+            result = result.substring(0, length - 1);
+            length--;
+            if (result === '') {
+                return '-1';
+            }
+        }
+    }
+ 
+    return result;
+}
+console.log(longestCommonPrefix(['loveleetcodee]))
+
+
+
+var lengthOfLongestSubstring = function (s) {
+    let currentString = [];
+    let longestStringLength = 0;
+ 
+    for (let i = 0; i < s.length; i++) {
+        const currentCharacterPosition = currentString.indexOf(s[i]);
+        if (currentCharacterPosition !== -1) {
+         currentString.splice(0, currentCharacterPosition + 1);
+        }
+        currentString.push(s[i]);
+        longestStringLength = Math.max(
+            longestStringLength,
+            currentString.length
+        );
+    }
+ 
+    return longestStringLength;
+};
+ 
+console.log(lengthOfLongestSubstring('abcadabb'),'hhh')
