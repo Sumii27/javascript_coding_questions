@@ -342,3 +342,28 @@ var lengthOfLongestSubstring = function (s) {
 };
  
 console.log(lengthOfLongestSubstring('abcadabb'),'hhh')
+
+
+
+// server loadbalacig counting
+const main = (input) => {
+    const data = input.trim().split('\n');
+    const reqSize = parseInt(data[0]);
+    const request = data[1].split(' ').map(Number);
+    console.log('input', input, 'data', data)
+    let server1 = 0;
+
+    // Add elements to server1 if the index is even
+    for (let i = 0; i < reqSize; i++) {
+        if (i % 2 === 0) {
+            server1 += request[i];
+        }
+    }
+
+    console.log(server1); // Output the result
+};
+
+// Example test case to pass to the function
+const exampleInput = '5\n1 2 3 4 5';
+main(exampleInput); // Expected Output: 9 (1 + 3 + 5)
+
