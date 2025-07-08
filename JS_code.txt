@@ -367,3 +367,175 @@ const main = (input) => {
 const exampleInput = '5\n1 2 3 4 5';
 main(exampleInput); // Expected Output: 9 (1 + 3 + 5)
 
+
+
+JavaScript Interview Prep – Simple ES6+ Logic
+
+1. Reverse a String
+-------------------
+const reverseString = (str) => str.split('').reverse().join('');
+console.log(reverseString("hello")); // "olleh"
+
+
+
+2. Count Vowels in a String
+---------------------------
+const countVowels = (str) => {
+  const vowels = 'aeiouAEIOU';
+  return str.split('').filter(char => vowels.includes(char)).length;
+};
+console.log(countVowels("Interview")); // 4
+
+
+
+3. Sum of Digits in a Number
+----------------------------
+const sumDigits = (num) => {
+  return num.toString().split('').reduce((acc, digit) => acc + Number(digit), 0);
+};
+console.log(sumDigits(1234)); // 10
+
+
+
+4. Check if a Number is Prime
+-----------------------------
+const isPrime = (num) => {
+  if (num <= 1) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false;
+  }
+  return true;
+};
+console.log(isPrime(7)); // true
+
+
+
+5. Remove Duplicates from an Array
+----------------------------------
+const removeDuplicates = (arr) => [...new Set(arr)];
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4])); // [1, 2, 3, 4]
+
+
+
+6. Find the Second Largest Number
+---------------------------------
+const secondLargest = (arr) => {
+  const unique = [...new Set(arr)].sort((a, b) => b - a);
+  return unique[1] ?? null;
+};
+console.log(secondLargest([10, 5, 10, 8])); // 8
+
+
+7. Rotate Array Left by 1
+-------------------------
+const rotateLeft = (arr) => {
+  arr.push(arr.shift());
+  return arr;
+};
+console.log(rotateLeft([1, 2, 3, 4])); // [2, 3, 4, 1]
+
+
+
+8. Capitalize First Letter of Each Word
+---------------------------------------
+const capitalizeWords = (str) => {
+  return str
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+console.log(capitalizeWords("hello world from javascript")); 
+// Output: "Hello World From Javascript"
+
+
+JavaScript FANG-Style Interview Questions – Arrays, Objects, Frequency, Logic
+
+1. Frequency Counter (Most Frequent Element)
+--------------------------------------------
+const mostFrequent = (arr) => {
+  const freq = {};
+  let max = 0, result = null;
+
+  for (let num of arr) {
+    freq[num] = (freq[num] || 0) + 1;
+    if (freq[num] > max) {
+      max = freq[num];
+      result = num;
+    }
+  }
+
+  return result;
+};
+console.log(mostFrequent([1, 3, 2, 3, 4, 3, 5])); // 3
+
+2. Find Missing Numbers in a Range
+----------------------------------
+const findMissing = (arr) => {
+  const full = Array.from({ length: Math.max(...arr) + 1 }, (_, i) => i);
+  return full.filter(num => !arr.includes(num));
+};
+console.log(findMissing([0, 1, 2, 4, 6])); // [3, 5]
+
+3. Product of All Elements Except Self (No Division)
+----------------------------------------------------
+const productExceptSelf = (nums) => {
+  const n = nums.length;
+  const left = Array(n).fill(1);
+  const right = Array(n).fill(1);
+  const result = Array(n);
+
+  for (let i = 1; i < n; i++) left[i] = left[i - 1] * nums[i - 1];
+  for (let i = n - 2; i >= 0; i--) right[i] = right[i + 1] * nums[i + 1];
+  for (let i = 0; i < n; i++) result[i] = left[i] * right[i];
+
+  return result;
+};
+console.log(productExceptSelf([1, 2, 3, 4])); // [24, 12, 8, 6]
+
+4. Count Frequency of Characters in a String
+--------------------------------------------
+const charFrequency = (str) => {
+  const freq = {};
+  for (let char of str) {
+    freq[char] = (freq[char] || 0) + 1;
+  }
+  return freq;
+};
+console.log(charFrequency("banana")); 
+// Output: { b: 1, a: 3, n: 2 }
+
+5. Group Elements by Frequency
+------------------------------
+const groupByFrequency = (arr) => {
+  const freq = {};
+  for (let num of arr) {
+    freq[num] = (freq[num] || 0) + 1;
+  }
+  return Object.entries(freq).sort((a, b) => b[1] - a[1]);
+};
+console.log(groupByFrequency([4, 5, 6, 5, 4, 3, 4])); 
+// Output: [ [ '4', 3 ], [ '5', 2 ], [ '6', 1 ], [ '3', 1 ] ]
+
+6. Find All Duplicates in an Array
+----------------------------------
+const findDuplicates = (arr) => {
+  const seen = new Set();
+  const duplicates = new Set();
+  for (let num of arr) {
+    if (seen.has(num)) duplicates.add(num);
+    seen.add(num);
+  }
+  return [...duplicates];
+};
+console.log(findDuplicates([1, 2, 3, 2, 4, 5, 1])); // [2, 1]
+
+7. Convert Array to Frequency Object
+------------------------------------
+const arrayToFreqObject = (arr) => {
+  return arr.reduce((acc, val) => {
+    acc[val] = (acc[val] || 0) + 1;
+    return acc;
+  }, {});
+};
+console.log(arrayToFreqObject(["apple", "banana", "apple", "orange"])); 
+// Output: { apple: 2, banana: 1, orange: 1 }
