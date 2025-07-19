@@ -539,3 +539,22 @@ const arrayToFreqObject = (arr) => {
 };
 console.log(arrayToFreqObject(["apple", "banana", "apple", "orange"])); 
 // Output: { apple: 2, banana: 1, orange: 1 }
+
+
+reversing a number without using any inbuilt method
+const revNo = (num) => {
+    let rev = 0
+    while(num > 0) {
+        let digit = num %10;
+        rev = rev *10 + digit;
+        num = Math.floor(num/10)
+    }
+    return rev
+    
+}
+
+console.log(revNo(1234))
+
+Write a function that takes an integer as input and repeatedly sums its digits until a single-digit number is obtained. The function should return this final single-digit result.
+
+
