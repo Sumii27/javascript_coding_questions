@@ -557,4 +557,12 @@ console.log(revNo(1234))
 
 Write a function that takes an integer as input and repeatedly sums its digits until a single-digit number is obtained. The function should return this final single-digit result.
 
-
+const sumUntil = (num) => {
+    let sum =0;
+    while (num >0) {
+        sum += num %10
+        num = Math.floor(num/10)
+    }
+    return sum
+}
+console.log(sumUntil(1234))
