@@ -567,7 +567,7 @@ const sumUntil = (num) => {
 }
 console.log(sumUntil(1234))
 
-
+// Coditas interview question
 const arr = [
   {
     id: 1,
@@ -596,4 +596,20 @@ arr.forEach((item) => {
     myArr.push({[name] : rest})
 })
 console.log(myObj, myArr)
+
+function removeStars(str) {
+  let result = "";
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === "*") {
+      // Remove previous character by slicing result
+      result = result.slice(0, -1);
+    } else {
+      result += str[i];
+    }
+  }
+  return result;
+}
+
+let str = "abc*k*II*";
+console.log(removeStars(str)); // Output: "abI"
 
