@@ -566,3 +566,34 @@ const sumUntil = (num) => {
     return sum
 }
 console.log(sumUntil(1234))
+
+
+const arr = [
+  {
+    id: 1,
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    phone: "1-770-736-8031 x56442",
+    city: "Gwenborough",
+    company: "Romaguera-Crona"
+  },
+  {
+    id: 2,
+    name: "Ervin Howell",
+    username: "Antonette",
+    email: "Shanna@melissa.tv",
+    phone: "010-692-6593 x09125",
+    city: "Wisokyburgh",
+    company: "Deckow-Crist"
+  },
+]
+const myObj = {};
+const myArr = []
+arr.forEach((item) => {
+    const {name, ...rest} = item;
+    myObj[item.name]= rest;
+    myArr.push({[name] : rest})
+})
+console.log(myObj, myArr)
+
