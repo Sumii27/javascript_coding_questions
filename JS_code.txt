@@ -1,163 +1,135 @@
- const monotonicArr = (nums) =>{
-     for (let index=0; index < nums.length; index++){
-         if (nums[index] !=0){
-             nums[index+1]
-             console.log(nums[index])
-         }
-     }
- }
-
- console.log(monotonicArr([4, 0, 1, 4, 2, 7, 0]))
-
-
-
- const missingNumbers = (nums) => {
-     let uniqueNumbers = [...new Set(nums)].sort();
-     console.log(uniqueNumbers)
-     let missingNumbers = [];
-
-     for(let i=0; i < uniqueNumbers.length; i++) {
-         let current = uniqueNumbers[i];
-         let nexxt = uniqueNumbers[i+1];
-         if(nexxt-current > 1){
-             for(let j=current + 1; j<nexxt; j++){
-                 missingNumbers.push(j)
-             }
-         }
-     }
-
-     return missingNumbers;
- };
-
- console.log(missingNumbers([4, 0, 1, 4, 2, 7, 8]));
-
-
-
- const moveZeros =(nums) =>{
-       const nonZeroIndex = nums.filter((item, index) => item != 0)
-       const zeroIndex = nums.filter((item, index) => item ==0)
-         console.log( ...nonZeroIndex,  ...zeroIndex)
- }
-
- console.log(moveZeros([0, 2, 0, 3, 4, 0, 5, 6, 0, 7]))
-
-
-
- const missing = (nums) =>{
-   const myArr = [...new Set(nums)].sort()
-   missingArr = []
-         for(let i=0; i < myArr.length; i++){
-             let current = myArr[i];
-             let next = myArr[i+1];
-             if(next-current > 1){
-                 for(let j =current+1; j < next; j++){
-                     missingArr.push(j)
-                 }
-             }
-         }
-         return missingArr
- }
- console.log(missing([9, 6, 4, 2, 3, 5, 7, 0, 1]))
-
-// rotating k times
-
-const rotate = (nums, k) =>{
-     let myArr = [];
-     for (let i=0; i<k; i++){
-         const lastElement = nums.pop()
-         nums.unshift(lastElement)
-     }
-    const myArr = nums.splice(-k)
-    return [...myArr, ...nums];
-}
-
-
-
-const sortedSquares =(nums) =>{
-   return nums.map((item) => item *item).sort((a,b) => a-b)
-}
-console.log(sortedSquares([-4,-1,0,3,10]))
-
-
-
- obj to arr
-const obj = {
-  '0': 'hello',
-  '1': 'here',
-  '2': 'here',
-  '3': 'is',
-  '4': 'my',
-  '5': 'hello'
+/*******************************
+  1️⃣ MONOTONIC PRINT (Skip 0)
+********************************/
+// Input: [4,0,1,4,2,7,0]
+// Output: 4 1 4 2 7
+const monotonicArr = (nums) => {
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== 0) console.log(nums[i]);
+  }
 };
-
-const myArr = Object.values(obj).map((item) => item)
-
+monotonicArr([4, 0, 1, 4, 2, 7, 0]);
 
 
- frequency finder
-const frequencyFinder = (str) => {
-   let count = {};
-   let maxCount = 0;
-   let mostOccurredElement = null;
-
-   str.forEach((item) => {
-       if (count[item]) {
-           count[item]++;
-       } else {
-           count[item] = 1;
-       }
-
-       if (count[item] > maxCount) {
-           maxCount = count[item];
-           mostOccurredElement = item;
-       }
-   });
-
-   return mostOccurredElement;
-}
-
-const str = ['a', 'b', 'a', 'c', 'b', 'a', 'd', 'a', 'b'];
-const mostOccurred = frequencyFinder(str);
-console.log("Most occurred element:", mostOccurred);
-
-//less repeating number
-
-const firstUniqChar = function(s) {
-    let myObj = {};
-    let minCount = Infinity;
-    let lessOccurredElement = null;
-
-    s.split('').forEach((item, index) => {
-        if (myObj[item]) {
-            myObj[item]++
-        } else {
-            myObj[item]  = 1
-        }
-    })
-    Object.entries(myObj).forEach(([key, value]) => {
-        if (myObj[key] < minCount ) {
-            minCount = myObj[key]
-            lessOccurredElement =  key
-        }
-    })
-    return {'object': myObj, 'less repeating number' : lessOccurredElement};
+/*********************************
+ 2️⃣ MISSING NUMBERS IN A RANGE
+*********************************/
+// Input: [4,0,1,4,2,7,8]
+// Output: [3,5,6]
+const missingNumbers = (nums) => {
+  const unique = [...new Set(nums)].sort((a,b)=>a-b);
+  const missing = [];
+  for (let i = 0; i < unique.length - 1; i++) {
+    let curr = unique[i];
+    let next = unique[i + 1];
+    for (let j = curr + 1; j < next; j++) missing.push(j);
+  }
+  return missing;
 };
-
-console.log(firstUniqChar('loveleetcode'))
-
-arr to obj
-const arr = [ 'hello', 'here', 'here', 'is', 'my', 'hello' ]
-let myObj ={}
-
-arr.forEach((value, index) => {
-  myObj[index] = value;
-})
-
-console.log(myObj)
+console.log(missingNumbers([4, 0, 1, 4, 2, 7, 8]));
 
 
+/*********************************
+ 3️⃣ MOVE ZEROS TO END
+*********************************/
+// Input: [0,2,0,3,4,0,5,6,0,7]
+// Output: [2,3,4,5,6,7,0,0,0,0]
+const moveZeros = (nums) => {
+  const nonZero = nums.filter(n => n !== 0);
+  const zeros = nums.filter(n => n === 0);
+  return [...nonZero, ...zeros];
+};
+console.log(moveZeros([0,2,0,3,4,0,5,6,0,7]));
 
- filtering
+
+/*********************************
+ 4️⃣ ROTATE ARRAY K TIMES
+*********************************/
+// Input: nums=[1,2,3,4,5], k=2
+// Output: [4,5,1,2,3]
+const rotate = (nums, k) => {
+  for (let i = 0; i < k; i++) {
+    nums.unshift(nums.pop());
+  }
+  return nums;
+};
+console.log(rotate([1,2,3,4,5],2));
+
+
+/*********************************
+ 5️⃣ SORTED SQUARES
+*********************************/
+// Input: [-4,-1,0,3,10]
+// Output: [0,1,9,16,100]
+const sortedSquares = (nums) =>
+  nums.map(n => n * n).sort((a, b) => a - b);
+
+console.log(sortedSquares([-4,-1,0,3,10]));
+
+
+/*********************************
+ 6️⃣ OBJECT → ARRAY
+*********************************/
+const obj = {0:'hello',1:'here',2:'here',3:'is',4:'my',5:'hello'};
+const objToArr = Object.values(obj);
+console.log(objToArr);
+
+
+/*********************************
+ 7️⃣ MOST FREQUENT ELEMENT
+*********************************/
+// Input: ['a','b','a','c','b','a']
+// Output: 'a'
+const frequencyFinder = (arr) => {
+  const count = {};
+  let max = 0, ans = null;
+
+  arr.forEach(c => {
+    count[c] = (count[c] || 0) + 1;
+    if (count[c] > max) {
+      max = count[c];
+      ans = c;
+    }
+  });
+
+  return ans;
+};
+console.log(frequencyFinder(['a','b','a','c','b','a']));
+
+
+/*********************************
+ 8️⃣ LEAST FREQUENT CHARACTER
+*********************************/
+// Input: "loveleetcode"
+// Output: { l:2, o:2, v:1, e:4, t:1, c:1 } → 'v'
+const firstUniqChar = (s) => {
+  const map = {};
+  s.split('').forEach(c => (map[c] = (map[c] || 0) + 1));
+
+  let min = Infinity, res = null;
+  for (const [key, val] of Object.entries(map)) {
+    if (val < min) {
+      min = val;
+      res = key;
+    }
+  }
+  return { map, "least repeating": res };
+};
+console.log(firstUniqChar("loveleetcode"));
+
+
+/*********************************
+ 9️⃣ ARRAY → OBJECT
+*********************************/
+const arr1 = ['hello','here','here','is','my','hello'];
+const arrToObj = {};
+arr1.forEach((v, i) => (arrToObj[i] = v));
+console.log(arrToObj);
+
+
+/*********************************
+ 🔟 FILTER & MERGE WITH STATUS
+*********************************/
 const values = {
   contactItem: [
     { contactItemSeq: 1, contactItemDetails: "Details 1" },
@@ -165,7 +137,6 @@ const values = {
     { contactItemSeq: 3, contactItemDetails: "Details 3" }
   ]
 };
-
 const editObj = {
   contactItem: [
     { contactItemSeq: 2, contactItemDetails: "Details 2 edited" },
@@ -173,443 +144,309 @@ const editObj = {
     { contactItemSeq: 5, contactItemDetails: "Details 5" }
   ]
 };
-let mappedValue = []
-const mappedSeq = values.contactItem.map((item) => item.contactItemSeq)
-const filteredData = editObj.contactItem.filter((item) => {
-    if(mappedSeq.includes(item.contactItemSeq)){
-        return mappedValue.push({...item, status: 'filtered'})
-    }
-    return mappedValue.push({...item, status: 'unfiltered'})
-}
-)
-console.log('mappedSeq', mappedValue)
+const seq = values.contactItem.map(i => i.contactItemSeq);
+const resultFilter = editObj.contactItem.map(item => ({
+  ...item,
+  status: seq.includes(item.contactItemSeq) ? "filtered" : "unfiltered"
+}));
+console.log(resultFilter);
 
 
-
- binary search 
-const arr = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
-
+/*********************************
+ 1️⃣1️⃣ BINARY SEARCH
+*********************************/
 const binarySearch = (arr, target) => {
-    let left = 0;
-    let  right = arr.length - 1
-    while(left <= right) {
-        let mid = Math.floor((left+right)/2)
-        if (arr[mid] == target) {
-            return {'index': mid, 'value': arr[mid]}
-        } else if (arr[mid] < target) {
-            left = mid + 1
-        } else {
-            right = mid - 1
-        }
-    }
-    
-}
-console.log(binarySearch(arr, 12));
+  let left = 0, right = arr.length - 1;
 
-
-
-// flattening Nested Array
-const nestedArray = [1, 6,
-  [1, 2, [3, 4]],
-  [5, 6],
-  [7, [8, [9, 10]]]
-]
-const flattenNested = (array) => {
-   let flattendArr= [];
-   array.forEach((item) => {
-       if (Array.isArray(item)) {
-           flattendArr = flattendArr.concat(flattenNested(item))
-        //   console.log('item', item)
-       } else {
-           flattendArr.push(item)
-       }
-   })
-   return flattendArr
-}
-
-console.log(flattenNested(nestedArray));
-
-
-
-
-//filtering through numbers
-const data = {2: 'abc',3: 'def',5: 'ghi',9: 'jkl',7: 'pqr'}
-const targetNumber = '35';
-const filterdOBJ = (number) => {
-    let myObj= {};
-   number.split('').forEach((item) => {
-       if (data[item]) {
-           myObj[item] = data[item]
-       }
-   })
-   return Object.values(myObj).join('')
-}
-
-
-console.log(filterdOBJ(targetNumber))
-
-
-//fibonacci seq
-const fibonacci = (n) =>{
-    const fib = [0,1]; // initially we have this elemnets for fib
-    for (let i=2; i<n; i++) {
-        fib[i] = fib[i-1] + fib[i-2]
-    }
-    return fib;
-}
-
-console.log(fibonacci(7))
-
-//factorial of number O(n)
-const factorial = (n) =>{
-   let fact = 1;
-   for (let i=2; i<=n; i++ ) {
-       fact = fact * i
-   }
-   return fact
-}
-
-console.log(factorial(4))
-
-//finding consecutive 1 from the binary array
-const consecutiveOnes = (arr) => {
-    let current = 0;
-    let max = 0;
-    for(let i=0; i < arr.length; i++) {
-        if(!arr[i]){
-            current = 0
-        } else {
-            current ++;
-            if (max < current) {
-                max = current
-            }
-        }
-    }
-    return max
-    
-}
-
-
-//reversing a number without converting it to a string
-
-function reverseNumber(number) {
-  var revNumber = 0;
-  while (number > 0) {
-    revNumber = (revNumber * 10) + (number % 10);
-    number = Math.floor(number / 10);
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) return mid;
+    if (arr[mid] < target) left = mid + 1;
+    else right = mid - 1;
   }
-  return revNumber;
-}
-console.log(reverseNumber(876));
-
-// longest sub string present in the array
-function longestCommonPrefix(arr) {
-    let result = arr[0];
-    let length = result.length;
-    for (let i = 1; i < arr.length; i++) {
-        while (arr[i].indexOf(result) !== 0) {
-            result = result.substring(0, length - 1);
-            length--;
-            if (result === '') {
-                return '-1';
-            }
-        }
-    }
- 
-    return result;
-}
-console.log(longestCommonPrefix(['loveleetcodee]))
-
-
-
-var lengthOfLongestSubstring = function (s) {
-    let currentString = [];
-    let longestStringLength = 0;
- 
-    for (let i = 0; i < s.length; i++) {
-        const currentCharacterPosition = currentString.indexOf(s[i]);
-        if (currentCharacterPosition !== -1) {
-         currentString.splice(0, currentCharacterPosition + 1);
-        }
-        currentString.push(s[i]);
-        longestStringLength = Math.max(
-            longestStringLength,
-            currentString.length
-        );
-    }
- 
-    return longestStringLength;
+  return -1;
 };
- 
-console.log(lengthOfLongestSubstring('abcadabb'),'hhh')
+console.log(binarySearch([2,4,6,8,10,12],10));
 
 
-
-// server loadbalacig counting
-const main = (input) => {
-    const data = input.trim().split('\n');
-    const reqSize = parseInt(data[0]);
-    const request = data[1].split(' ').map(Number);
-    console.log('input', input, 'data', data)
-    let server1 = 0;
-
-    // Add elements to server1 if the index is even
-    for (let i = 0; i < reqSize; i++) {
-        if (i % 2 === 0) {
-            server1 += request[i];
-        }
-    }
-
-    console.log(server1); // Output the result
+/*********************************
+ 1️⃣2️⃣ FLATTEN NESTED ARRAY (RECURSION)
+*********************************/
+const flattenNested = (arr) => {
+  let flat = [];
+  arr.forEach(item =>
+    Array.isArray(item)
+      ? flat.push(...flattenNested(item))
+      : flat.push(item)
+  );
+  return flat;
 };
-
-// Example test case to pass to the function
-const exampleInput = '5\n1 2 3 4 5';
-main(exampleInput); // Expected Output: 9 (1 + 3 + 5)
+console.log(flattenNested([1,[2,[3]],4,[5,[6,7]]])); 
 
 
-
-JavaScript Interview Prep – Simple ES6+ Logic
-
-1. Reverse a String
--------------------
-const reverseString = (str) => str.split('').reverse().join('');
-console.log(reverseString("hello")); // "olleh"
-
-
-
-2. Count Vowels in a String
----------------------------
-const countVowels = (str) => {
-  const vowels = 'aeiouAEIOU';
-  return str.split('').filter(char => vowels.includes(char)).length;
+/*********************************
+ 1️⃣3️⃣ FILTER KEYS USING NUMBERS
+*********************************/
+const dataMap = {2:'abc',3:'def',5:'ghi',9:'jkl',7:'pqr'};
+const filterObj = (num) => {
+  let str = "";
+  num.split('').forEach(n => {
+    if (dataMap[n]) str += dataMap[n];
+  });
+  return str;
 };
-console.log(countVowels("Interview")); // 4
+console.log(filterObj("35"));  // "defghi"
 
 
-
-3. Sum of Digits in a Number
-----------------------------
-const sumDigits = (num) => {
-  return num.toString().split('').reduce((acc, digit) => acc + Number(digit), 0);
-};
-console.log(sumDigits(1234)); // 10
-
-
-
-4. Check if a Number is Prime
------------------------------
-const isPrime = (num) => {
-  if (num <= 1) return false;
-  for (let i = 2; i <= Math.sqrt(num); i++) {
-    if (num % i === 0) return false;
-  }
-  return true;
-};
-console.log(isPrime(7)); // true
-
-
-
-5. Remove Duplicates from an Array
-----------------------------------
-const removeDuplicates = (arr) => [...new Set(arr)];
-console.log(removeDuplicates([1, 2, 2, 3, 4, 4])); // [1, 2, 3, 4]
-
-
-
-6. Find the Second Largest Number
----------------------------------
-const secondLargest = (arr) => {
-  const unique = [...new Set(arr)].sort((a, b) => b - a);
-  return unique[1] ?? null;
-};
-console.log(secondLargest([10, 5, 10, 8])); // 8
-
-
-7. Rotate Array Left by 1
--------------------------
-const rotateLeft = (arr) => {
-  arr.push(arr.shift());
+/*********************************
+ 1️⃣4️⃣ FIBONACCI
+*********************************/
+const fibonacci = (n) => {
+  const arr = [0, 1];
+  for (let i = 2; i < n; i++) arr.push(arr[i - 1] + arr[i - 2]);
   return arr;
 };
-console.log(rotateLeft([1, 2, 3, 4])); // [2, 3, 4, 1]
+console.log(fibonacci(7));
 
 
-
-8. Capitalize First Letter of Each Word
----------------------------------------
-const capitalizeWords = (str) => {
-  return str
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+/*********************************
+ 1️⃣5️⃣ FACTORIAL
+*********************************/
+const factorial = (n) => {
+  let f = 1;
+  for (let i = 2; i <= n; i++) f *= i;
+  return f;
 };
-console.log(capitalizeWords("hello world from javascript")); 
-// Output: "Hello World From Javascript"
+console.log(factorial(5));
 
 
-JavaScript FANG-Style Interview Questions – Arrays, Objects, Frequency, Logic
+/*********************************
+ 1️⃣6️⃣ CONSECUTIVE ONES
+*********************************/
+const consecutiveOnes = (arr) => {
+  let max = 0, curr = 0;
+  arr.forEach(n => {
+    if (n === 1) curr++;
+    else curr = 0;
+    max = Math.max(max, curr);
+  });
+  return max;
+};
+console.log(consecutiveOnes([1,1,0,1,1,1]));
 
-1. Frequency Counter (Most Frequent Element)
---------------------------------------------
-const mostFrequent = (arr) => {
-  const freq = {};
-  let max = 0, result = null;
 
-  for (let num of arr) {
-    freq[num] = (freq[num] || 0) + 1;
-    if (freq[num] > max) {
-      max = freq[num];
-      result = num;
+/*********************************
+ 1️⃣7️⃣ REVERSE NUMBER WITHOUT STRING
+*********************************/
+const reverseNumber = (num) => {
+  let rev = 0;
+  while (num > 0) {
+    rev = rev * 10 + (num % 10);
+    num = Math.floor(num / 10);
+  }
+  return rev;
+};
+console.log(reverseNumber(9876));
+
+
+/*********************************
+ 1️⃣8️⃣ LONGEST COMMON PREFIX
+*********************************/
+const longestCommonPrefix = (arr) => {
+  let prefix = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    while (!arr[i].startsWith(prefix)) {
+      prefix = prefix.slice(0, -1);
+      if (!prefix) return "";
+    }
+  }
+  return prefix;
+};
+console.log(longestCommonPrefix(["flower","flow","flight"]));
+
+
+/*********************************
+ 1️⃣9️⃣ LONGEST SUBSTRING (NO REPEAT)
+*********************************/
+const longestSubstring = (s) => {
+  let curr = [], max = 0;
+  for (let c of s) {
+    if (curr.includes(c)) curr = curr.slice(curr.indexOf(c) + 1);
+    curr.push(c);
+    max = Math.max(max, curr.length);
+  }
+  return max;
+};
+console.log(longestSubstring("abcadabb"));
+
+
+/*********************************
+ 2️⃣0️⃣ REMOVE STAR (delete previous)
+*********************************/
+const removeStars = (str) => {
+  let res = "";
+  for (let c of str) res = c === "*" ? res.slice(0, -1) : res + c;
+  return res;
+};
+console.log(removeStars("abc*k*II*")); // "abI"
+
+
+/*********************************
+ 2️⃣1️⃣ COMPRESS STRING (a3b2c4)
+*********************************/
+const compress = (str) => {
+  let res = "", count = 1;
+  for (let i = 1; i <= str.length; i++) {
+    if (str[i] === str[i - 1]) count++;
+    else {
+      res += str[i - 1] + count;
+      count = 1;
+    }
+  }
+  return res;
+};
+console.log(compress("aaabbccccd"));
+
+
+// Input: [1,3,5], [2,4,6]
+// Output: [1,2,3,4,5,6]
+
+function merge(arr1, arr2) {
+  let i = 0, j = 0, result = [];
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] <= arr2[j]) result.push(arr1[i++]);
+    else result.push(arr2[j++]);
+  }
+
+  return result.concat(arr1.slice(i)).concat(arr2.slice(j));
+}
+
+
+// Input: "listen", "silent"
+// Output: true
+
+function isAnagram(a, b) {
+  return a.split("").sort().join("") === b.split("").sort().join("");
+}
+
+
+// Input: "I am learning JavaScript everyday"
+// Output: "JavaScript"
+
+function longestWord(str) {
+  let words = str.split(" ");
+  let longest = "";
+
+  for (let w of words) {
+    if (w.length > longest.length) longest = w;
+  }
+
+  return longest;
+}
+
+
+// Input: [5, 7, 2, 9, 1]
+// Output: 7
+
+function secondLargest(arr) {
+  let max = -Infinity;
+  let second = -Infinity;
+
+  for (let n of arr) {
+    if (n > max) {
+      second = max;
+      max = n;
+    } else if (n > second && n !== max) {
+      second = n;
+    }
+  }
+
+  return second;
+}
+
+
+// Input: "banana"
+// Output: { b:1, a:3, n:2 }
+
+function freq(str) {
+  let map = {};
+
+  for (let ch of str) {
+    map[ch] = (map[ch] || 0) + 1;
+  }
+
+  return map;
+}
+
+
+
+// Input: [3,4,4,3,6,3]
+// Output: [3,4,6]
+
+function removeDup(arr) {
+  let result = [];
+
+  for (let n of arr) {
+    if (!result.includes(n)) {
+      result.push(n);
     }
   }
 
   return result;
-};
-console.log(mostFrequent([1, 3, 2, 3, 4, 3, 5])); // 3
-
-2. Find Missing Numbers in a Range
-----------------------------------
-const findMissing = (arr) => {
-  const full = Array.from({ length: Math.max(...arr) + 1 }, (_, i) => i);
-  return full.filter(num => !arr.includes(num));
-};
-console.log(findMissing([0, 1, 2, 4, 6])); // [3, 5]
-
-3. Product of All Elements Except Self (No Division)
-----------------------------------------------------
-const productExceptSelf = (nums) => {
-  const n = nums.length;
-  const left = Array(n).fill(1);
-  const right = Array(n).fill(1);
-  const result = Array(n);
-
-  for (let i = 1; i < n; i++) left[i] = left[i - 1] * nums[i - 1];
-  for (let i = n - 2; i >= 0; i--) right[i] = right[i + 1] * nums[i + 1];
-  for (let i = 0; i < n; i++) result[i] = left[i] * right[i];
-
-  return result;
-};
-console.log(productExceptSelf([1, 2, 3, 4])); // [24, 12, 8, 6]
-
-4. Count Frequency of Characters in a String
---------------------------------------------
-const charFrequency = (str) => {
-  const freq = {};
-  for (let char of str) {
-    freq[char] = (freq[char] || 0) + 1;
-  }
-  return freq;
-};
-console.log(charFrequency("banana")); 
-// Output: { b: 1, a: 3, n: 2 }
-
-5. Group Elements by Frequency
-------------------------------
-const groupByFrequency = (arr) => {
-  const freq = {};
-  for (let num of arr) {
-    freq[num] = (freq[num] || 0) + 1;
-  }
-  return Object.entries(freq).sort((a, b) => b[1] - a[1]);
-};
-console.log(groupByFrequency([4, 5, 6, 5, 4, 3, 4])); 
-// Output: [ [ '4', 3 ], [ '5', 2 ], [ '6', 1 ], [ '3', 1 ] ]
-
-6. Find All Duplicates in an Array
-----------------------------------
-const findDuplicates = (arr) => {
-  const seen = new Set();
-  const duplicates = new Set();
-  for (let num of arr) {
-    if (seen.has(num)) duplicates.add(num);
-    seen.add(num);
-  }
-  return [...duplicates];
-};
-console.log(findDuplicates([1, 2, 3, 2, 4, 5, 1])); // [2, 1]
-
-7. Convert Array to Frequency Object
-------------------------------------
-const arrayToFreqObject = (arr) => {
-  return arr.reduce((acc, val) => {
-    acc[val] = (acc[val] || 0) + 1;
-    return acc;
-  }, {});
-};
-console.log(arrayToFreqObject(["apple", "banana", "apple", "orange"])); 
-// Output: { apple: 2, banana: 1, orange: 1 }
-
-
-reversing a number without using any inbuilt method
-const revNo = (num) => {
-    let rev = 0
-    while(num > 0) {
-        let digit = num %10;
-        rev = rev *10 + digit;
-        num = Math.floor(num/10)
-    }
-    return rev
-    
 }
 
-console.log(revNo(1234))
 
-Write a function that takes an integer as input and repeatedly sums its digits until a single-digit number is obtained. The function should return this final single-digit result.
 
-const sumUntil = (num) => {
-    let sum =0;
-    while (num >0) {
-        sum += num %10
-        num = Math.floor(num/10)
-    }
-    return sum
+// Input: "MendixDeveloper"
+// Output: { vowels: 6, consonants: 10 }
+
+function countVC(str) {
+  let vowels = "aeiouAEIOU";
+  let v = 0, c = 0;
+
+  for (let ch of str) {
+    if (vowels.includes(ch)) v++;
+    else if (/[a-zA-Z]/.test(ch)) c++;
+  }
+
+  return { vowels: v, consonants: c };
 }
-console.log(sumUntil(1234))
 
-// Coditas interview question
-const arr = [
-  {
-    id: 1,
-    name: "Leanne Graham",
-    username: "Bret",
-    email: "Sincere@april.biz",
-    phone: "1-770-736-8031 x56442",
-    city: "Gwenborough",
-    company: "Romaguera-Crona"
-  },
-  {
-    id: 2,
-    name: "Ervin Howell",
-    username: "Antonette",
-    email: "Shanna@melissa.tv",
-    phone: "010-692-6593 x09125",
-    city: "Wisokyburgh",
-    company: "Deckow-Crist"
-  },
-]
-const myObj = {};
-const myArr = []
-arr.forEach((item) => {
-    const {name, ...rest} = item;
-    myObj[item.name]= rest;
-    myArr.push({[name] : rest})
-})
-console.log(myObj, myArr)
 
-function removeStars(str) {
-  let result = "";
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === "*") {
-      // Remove previous character by slicing result
-      result = result.slice(0, -1);
+
+// Input: [-2,1,-3,4,-1,2,1,-5,4]
+// Output: 6   (subarray: [4,-1,2,1])
+
+function maxSubArray(arr) {
+  let max = arr[0];
+  let curr = 0;
+
+  for (let n of arr) {
+    curr += n;
+    max = Math.max(max, curr);
+    if (curr < 0) curr = 0;
+  }
+
+  return max;
+}
+
+
+
+// Input: "{[()]}"
+// Output: true
+
+function isBalanced(str) {
+  const stack = [];
+  const map = { ")": "(", "]": "[", "}": "{" };
+
+  for (let ch of str) {
+    if (map[ch]) {
+      if (stack.pop() !== map[ch]) return false;
     } else {
-      result += str[i];
+      stack.push(ch);
     }
   }
-  return result;
+
+  return stack.length === 0;
 }
-
-let str = "abc*k*II*";
-console.log(removeStars(str)); // Output: "abI"
-
